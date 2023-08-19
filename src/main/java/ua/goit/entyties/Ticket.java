@@ -1,10 +1,8 @@
 package ua.goit.entyties;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.ZonedDateTime;
@@ -13,19 +11,25 @@ import java.time.ZonedDateTime;
 @Table(name = "ticket")
 @Data
 @ToString
+@NoArgsConstructor
 public class Ticket {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false)
     private ZonedDateTime createdAt;
 
-    @Column(name = "client_id")
-    private Long clientId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id", nullable = false)
+    @MapsId
+    private Client client;
 
-    @Column(name = "from_planet_id")
-    private String fromPlanetId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "to_planet_id", nullable = false)
+    private Planet toPlanet;
 
-    @Column(name = "to_planet_id")
-    private String toPlanetId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "from_planet_id", nullable = false)
+    private Planet fromPlanet;
 }
