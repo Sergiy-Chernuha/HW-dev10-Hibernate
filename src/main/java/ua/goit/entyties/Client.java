@@ -5,9 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Table(name = "client")
 @Data
@@ -21,8 +18,4 @@ public class Client {
 
     @Column(nullable = false)
     private String name;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private Set<Ticket> ticket = new HashSet<>();
 }

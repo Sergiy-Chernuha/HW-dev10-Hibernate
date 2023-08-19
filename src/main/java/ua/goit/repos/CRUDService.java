@@ -8,15 +8,13 @@ import java.util.Optional;
 public interface CRUDService<T>{
     void save(Session session,T entity);
 
-    Optional<T> findById(Session session,Long id);
+    Optional<T> findById(Session session,String id);
 
     List<T> findAll(Session session);
 
     void update(Session session,T entity);
 
-    void deleteById(Session session,Long id);
+    void deleteById(Session session,String id);
 
     void delete(Session session,T entity);
-
-    void deleteAll(Session session);
 }

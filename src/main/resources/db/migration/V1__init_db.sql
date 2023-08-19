@@ -1,7 +1,7 @@
 CREATE TABLE client
 (
     ID   INTEGER auto_increment PRIMARY KEY,
-    NAME CHARACTER(200) NOT NULL
+    NAME VARCHAR(200) NOT NULL
 );
 
 ALTER TABLE client
@@ -9,8 +9,8 @@ ALTER TABLE client
 
 CREATE TABLE planet
 (
-    ID   CHARACTER(255) PRIMARY KEY,
-    NAME CHARACTER(500) NOT NULL
+    ID   VARCHAR(255) PRIMARY KEY,
+    NAME VARCHAR(500) NOT NULL
 );
 
 ALTER TABLE planet
@@ -27,8 +27,8 @@ CREATE TABLE ticket
     ID             INTEGER auto_increment PRIMARY KEY,
     created_at     TIMESTAMP WITH TIME ZONE NOT NULL,
     client_id      INTEGER                  NOT NULL,
-    from_planet_id CHARACTER(255)           NOT NULL,
-    to_planet_id   CHARACTER(255)           NOT NULL
+    from_planet_id VARCHAR(255)             NOT NULL,
+    to_planet_id   VARCHAR(255)             NOT NULL
 );
 
 ALTER TABLE ticket

@@ -1,12 +1,10 @@
 package ua.goit;
 
-import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
 import ua.goit.entyties.Client;
-
 import ua.goit.entyties.Planet;
-import ua.goit.entyties.Ticket;
 import ua.goit.repos.impl.ClientService;
+import ua.goit.repos.impl.PlanetService;
 import ua.goit.utils.FlywayUtils;
 import ua.goit.utils.HibernateUtil;
 
@@ -15,61 +13,67 @@ import java.util.List;
 import java.util.Optional;
 
 public class Main {
-    //    private static final Logger LOGGER= LoggerFactory.getLogger(Main.class);
     public static void main(String[] args) {
-//        BasicConfigurator.configure();
         FlywayUtils.getInstance().doMigrations();
-
-
-
         ClientService clientService = new ClientService();
-//        List<Client> allClients=null;
-//        List<Planet> allPlanets=new ArrayList<>();
+        PlanetService planetService = new PlanetService();
 
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
-//            EntityManager entityManager=session.getEntityManagerFactory().createEntityManager();
-//            Client client=new Client();
-//            client.setName("Fertdfg");
-//            try {
-//                entityManager.merge(client);
-//                System.out.println(client);
-//            }catch (Exception e){
-//                e.printStackTrace();
-//            }
-//            _____________ready_____________
-//            Client client=new Client();
-//            client.setName("Fertdfg");
-//            clientService.save(session,client);
-//            ____________ready_______________
-            Optional<Client> clientById = clientService.findById(session, 4L);
+            Client sevedClient = new Client();
+            sevedClient.setName("Ferdinant");
+            clientService.save(session, sevedClient);
+
+            Optional<Client> clientById = clientService.findById(session, String.valueOf(4L));
             System.out.println(clientById.get());
-//            ______________ready______________
-//            List<Client> clientList = clientService.findAll(session);
-//            System.out.println(Arrays.asList(clientList));
-//            _______________________________
-//            __________________________
-//             clientService.deleteById(session, 9L);
 
-//            clientService.deleteAll(session);
-//           Transaction transaction = session.beginTransaction();
+            List<Client> clientList = clientService.findAll(session);
+            System.out.println(Arrays.asList(clientList));
 
-//           PlanetService planetService= new PlanetService();
-//           session.persist(p);
+            Optional<Client> updatedClient = clientService.findById(session, String.valueOf(4L));
+            if (updatedClient.isPresent()) {
+                updatedClient.get().setName("NewYuonger");
+                clientService.update(session, updatedClient.get());
+            }
 
-//           Planet planet = session.get(Planet.class, "QWERTY3");
-//           transaction.commit();
-//           allClients = clientService.findAll(session);
-//           allPlanets = planetService.findAll(session);
+            clientService.deleteById(session, String.valueOf(11L));
 
-//           Optional<Client> byId = clientService.findById(session, 4l);
-//            System.out.println( byId.get());
-//            clientService.delete(session,byId.get());
+            Client newClient = new Client();
+            newClient.setName("Fuming");
+            clientService.save(session, newClient);
+            Optional<Client> deletedClient = clientService.findById(session, String.valueOf(12L));
+            if (deletedClient.isPresent()) {
+                clientService.delete(session, deletedClient.get());
+            }
 
+            Planet sevedPlanet = new Planet();
+            sevedPlanet.setId("QWERTY");
+            sevedPlanet.setName("qwerty34563");
+            planetService.save(session, sevedPlanet);
 
-//           System.out.println(allClients);
-//           System.out.println(+ planet);
+            Optional<Planet> planetById = planetService.findById(session, "QWERTY");
+            System.out.println(planetById.get());
+
+            List<Planet> planetList = planetService.findAll(session);
+            System.out.println(Arrays.asList(planetList));
+
+            Optional<Planet> updatedPlanet = planetService.findById(session, "QWERTY");
+            if (updatedPlanet.isPresent()) {
+                updatedPlanet.get().setName("NewYuonger");
+                planetService.update(session, updatedPlanet.get());
+            }
+
+            planetService.deleteById(session, "QWERTY");
+
+            Planet newPlanet = new Planet();
+            newPlanet.setId("MIMI");
+            newPlanet.setName("Fuming");
+            planetService.save(session, newPlanet);
+            Optional<Planet> deletedPlanet = planetService.findById(session, "MIMI");
+            if (deletedPlanet.isPresent()) {
+                planetService.delete(session, deletedPlanet.get());
+            }
         } catch (RuntimeException e) {
-//           LOGGER.error("It's wrong");
+            System.out.println(e.getMessage());
         }
     }
 }

@@ -19,17 +19,4 @@ public class Ticket {
 
     @Column(name = "created_at", nullable = false)
     private ZonedDateTime createdAt;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_id", nullable = false)
-    @MapsId
-    private Client client;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "to_planet_id", nullable = false)
-    private Planet toPlanet;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "from_planet_id", nullable = false)
-    private Planet fromPlanet;
 }
