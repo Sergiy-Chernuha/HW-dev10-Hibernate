@@ -3,11 +3,14 @@ package ua.goit;
 import org.hibernate.Session;
 import ua.goit.entyties.Client;
 import ua.goit.entyties.Planet;
+import ua.goit.entyties.Ticket;
 import ua.goit.repos.impl.ClientService;
 import ua.goit.repos.impl.PlanetService;
+import ua.goit.repos.impl.TicketService;
 import ua.goit.utils.FlywayUtils;
 import ua.goit.utils.HibernateUtil;
 
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +20,7 @@ public class Main {
         FlywayUtils.getInstance().doMigrations();
         ClientService clientService = new ClientService();
         PlanetService planetService = new PlanetService();
+        TicketService ticketService = new TicketService();
 
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Client sevedClient = new Client();
@@ -72,6 +76,38 @@ public class Main {
             if (deletedPlanet.isPresent()) {
                 planetService.delete(session, deletedPlanet.get());
             }
+
+            Ticket savedTicket = new Ticket();
+            Optional<Client> newSavedClient = clientService.findById(session, String.valueOf(4L));
+            Optional<Planet> newSavedPlanet = planetService.findById(session, "QWERTY3");
+            Optional<Planet> newSavedSecondPlanet = planetService.findById(session, "SUN23");
+            savedTicket.setCreatedAt(ZonedDateTime.now());
+            savedTicket.setClient(newSavedClient.get());
+            savedTicket.setToPlanet(newSavedPlanet.get());
+            savedTicket.setFromPlanet(newSavedSecondPlanet.get());
+            ticketService.save(session, savedTicket);
+
+            Optional<Ticket> findTicket = ticketService.findById(session, String.valueOf(5L));
+            System.out.println(findTicket.get());
+
+            List<Ticket> ticketList = ticketService.findAll(session);
+            System.out.println(ticketList);
+
+            Ticket updatedTicket = new Ticket();
+            Optional<Client> newClientToTicket = clientService.findById(session, String.valueOf(2L));
+            Optional<Planet> newPlanetToTicket = planetService.findById(session, "ROCKET");
+            Optional<Planet> newSecondPlanetToTicket = planetService.findById(session, "ZOOM");
+            updatedTicket.setId(1L);
+            updatedTicket.setCreatedAt(ZonedDateTime.now());
+            updatedTicket.setClient(newClientToTicket.get());
+            updatedTicket.setToPlanet(newPlanetToTicket.get());
+            updatedTicket.setFromPlanet(newSecondPlanetToTicket.get());
+            ticketService.update(session, updatedTicket);
+
+            ticketService.deleteById(session, String.valueOf(11L));
+
+            Optional<Ticket> deletedTicket = ticketService.findById(session, String.valueOf(10L));
+            ticketService.delete(session, deletedTicket.get());
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }

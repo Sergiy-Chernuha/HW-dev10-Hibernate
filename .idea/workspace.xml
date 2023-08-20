@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e10d351a-4741-4c55-8e4d-df88ad357ef5" name="Changes" comment="middle commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/TicketService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/entyties/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/entyties/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/entyties/Planet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/entyties/Planet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/entyties/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/entyties/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/repos/CRUDService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/repos/CRUDService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/PlanetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/PlanetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/utils/FlywayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/utils/FlywayUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +51,24 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "history": [
+    {
+      "assignee": "Sergiy-Chernuha"
+    }
+  ],
+  "lastFilter": {
+    "assignee": "Sergiy-Chernuha"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="3040d9c4-11bb-40cd-a21d-7850b12aab0a" />
+        <option name="url" value="https://github.com/Sergiy-Chernuha/HW-dev10-Hibernate.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3

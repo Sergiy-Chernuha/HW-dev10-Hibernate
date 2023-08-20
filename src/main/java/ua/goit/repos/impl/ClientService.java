@@ -11,9 +11,13 @@ import java.util.Optional;
 public class ClientService implements CRUDService<Client> {
     @Override
     public void save(Session session, Client entity) {
-        Transaction transaction = session.beginTransaction();
-        session.persist(entity);
-        transaction.commit();
+        try {
+            Transaction transaction = session.beginTransaction();
+            session.persist(entity);
+            transaction.commit();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
