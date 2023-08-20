@@ -1,20 +1,18 @@
 package ua.goit.repos;
 
-import org.hibernate.Session;
-
 import java.util.List;
 import java.util.Optional;
 
 public interface CRUDService<T>{
-    void save(Session session,T entity);
+    void save(T entity);
 
-    Optional<T> findById(Session session,String id);
+    Optional<T> findById(String id);
 
-    List<T> findAll(Session session);
+    List<T> findAll();
 
-    void update(Session session,T entity);
+    void update(T entity);
 
-    void deleteById(Session session,String id);
+    void deleteById(String id);
 
-    void delete(Session session,T entity);
+    void delete(T entity);
 }

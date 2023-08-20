@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e10d351a-4741-4c55-8e4d-df88ad357ef5" name="Changes" comment="middle commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/TicketService.java" afterDir="false" />
+    <list default="true" id="e10d351a-4741-4c55-8e4d-df88ad357ef5" name="Changes" comment="finish HW11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/entyties/Planet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/entyties/Planet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/entyties/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/entyties/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/repos/CRUDService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/repos/CRUDService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/PlanetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/PlanetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/repos/impl/TicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/utils/DBUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/goit/utils/FlywayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/goit/utils/FlywayUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="hw11" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,37 +84,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;a51e2667-a638-4597-877d-616e6c1165c2&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/homeworkspacegoit/HW-dev4-DBMS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.29327902&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JPA.DatabaseSchemaImportDialog": "a51e2667-a638-4597-877d-616e6c1165c2",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "hw11",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/homeworkspacegoit/HW-dev4-DBMS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "settings.editor.splitter.proportion": "0.29327902",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;,
-      &quot;module&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory",
+      "module"
     ],
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;h2&quot;
+    "DatabaseDriversLRU": [
+      "h2"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\homeworkspacegoit\HW-dev10-Hibernate\src\main\resources\db\migration" />
@@ -216,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692478023205</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finish HW11">
+      <option name="closed" value="true" />
+      <created>1692534370083</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1692534370083</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,7 +240,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="hw11" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -235,6 +260,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="middle commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="middle commit" />
+    <MESSAGE value="finish HW11" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish HW11" />
   </component>
 </project>

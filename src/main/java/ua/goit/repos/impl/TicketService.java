@@ -1,25 +1,34 @@
 package ua.goit.repos.impl;
 
+import jakarta.persistence.PersistenceException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ua.goit.entyties.Client;
 import ua.goit.entyties.Ticket;
 import ua.goit.repos.CRUDService;
+import ua.goit.utils.HibernateUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class TicketService implements CRUDService<Ticket> {
     @Override
-    public void save(Session session, Ticket entity) {
-        Transaction transaction = session.beginTransaction();
-        session.persist(entity);
-        transaction.commit();
+    public void save(Ticket entity) {
+        try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.persist(entity);
+            transaction.commit();
+        } catch (PersistenceException ex) {
+            System.out.println("Can't save ticked with NULL field");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
-    public Optional<Ticket> findById(Session session, String id) {
-        try {
+    public Optional<Ticket> findById(String id) {
+        try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             return Optional.ofNullable(session.get(Ticket.class, Long.parseLong(id)));
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -29,18 +38,23 @@ public class TicketService implements CRUDService<Ticket> {
     }
 
     @Override
-    public List<Ticket> findAll(Session session) {
-        return session.createQuery("from Ticket", Ticket.class).list();
+    public List<Ticket> findAll() {
+        try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
+            return session.createQuery("from Ticket", Ticket.class).list();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return new ArrayList<>();
     }
 
     @Override
-    public void update(Session session, Ticket entity) {
-        String sql="UPDATE Ticket SET CREATED_AT =:new_created_at, CLIENT_ID =:new_client_id" +
+    public void update(Ticket entity) {
+        String sql = "UPDATE Ticket SET CREATED_AT =:new_created_at, CLIENT_ID =:new_client_id" +
                 ", FROM_PLANET_ID =:new_from_planet_id" +
                 ", TO_PLANET_ID =:new_to_planet_id " +
                 "WHERE id =:ticket_id";
 
-        try {
+        try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             session.createNativeQuery(sql, Client.class)
                     .setParameter("new_created_at", entity.getCreatedAt())
@@ -57,10 +71,9 @@ public class TicketService implements CRUDService<Ticket> {
     }
 
     @Override
-    public void deleteById(Session session, String id) {
-        Optional<Ticket> ticket = findById(session, id);
-
-        try {
+    public void deleteById(String id) {
+        try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
+            Optional<Ticket> ticket = findById(id);
             Transaction transaction = session.beginTransaction();
             session.remove(ticket.get());
             transaction.commit();
@@ -70,7 +83,7 @@ public class TicketService implements CRUDService<Ticket> {
     }
 
     @Override
-    public void delete(Session session, Ticket entity) {
-        deleteById(session, String.valueOf(entity.getId()));
+    public void delete(Ticket entity) {
+        deleteById(String.valueOf(entity.getId()));
     }
 }

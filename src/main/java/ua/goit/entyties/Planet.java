@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Planet {
     @Id
-    @Column(name = "id")
+    @Column(name = "id",nullable = false)
     private String id;
 
     @Column(name = "name",nullable = false)
